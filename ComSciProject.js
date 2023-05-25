@@ -254,7 +254,7 @@ function advancement(advancer){
             let end = document.createElement('pre');
             let endtext = "The game is over!";
             let favor=(minercount+ transferbops)-(minerpresscount+transferpresses)
-            if(minercount+minerpresscount>=24&&specials>=15&&advancements.length >=17){
+            if(minercount+minerpresscount>=24&&specials>=10&&advancements.length >=17){
                 let percent = true
             } else {
                 let percent = false
