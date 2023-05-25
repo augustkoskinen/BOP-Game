@@ -1,5 +1,5 @@
 html {
-    background-color:blanchedalmond;
+    background-color: aliceblue;
 }
 body {
     font-family: monospace;
@@ -8,16 +8,30 @@ body {
 button {
     padding: 10px;
     border-radius: 5px;
+    background-color:lightsteelblue;
+    border-color: black;
+    cursor:pointer;
+    border-style: solid;
+    transition:background-color 0.25s;
 }
 
+button:hover {
+    background-color:lightgrey;
+}
+button:active {
+    background-color:darkgrey;
+}
 .center {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    padding: 300px
+    align-items: center;
+    height: 90vh;
 }
 
 .miners {
     position: absolute;
-    color:blue;
     top: 2%;
     left: 2%;
     transform: translate(-2%, -2%);

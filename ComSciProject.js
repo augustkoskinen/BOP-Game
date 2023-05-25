@@ -177,8 +177,8 @@ function advancement(advancer){
     switch (advancer) {
         //react to bops
         case 0: {
-            press = addButton("Press Me!","press",".center",()=>{presses++;update();});
-            let container = document.querySelector(".center");
+            press = addButton("Press Me!","press","#presscenter",()=>{presses++;update();});
+            let container = document.querySelector("#presscenter")
             let buttondisplay = document.createElement('pre');
             buttondisplay.id = "displaypresses";
             container.append(buttondisplay)
@@ -207,7 +207,7 @@ function advancement(advancer){
             stone.innerHTML = bigbopbutton
         } break;
         case 5: {
-            let makebopminer = addButton("Miner: 100 BOPS","buyminer",".center",()=>{if(bops>=100){bops-=100; createBopMiner(); update(); if(minercount>=12){makebopminer.remove()}}});
+            let makebopminer = addButton("Miner: 100 BOPS","buyminer","#buttoncenter",()=>{if(bops>=100){bops-=100; createBopMiner(); update(); if(minercount>=12){makebopminer.remove()}}});
         }break;
         case 6: {
             press.innerHTML = "Yay. You pressed me ONCE."
@@ -220,8 +220,8 @@ function advancement(advancer){
         }break;
         case 9: {
             press.innerHTML = "Here's a special button"
-            special = addButton("Specials for 100 presses","special",".center",()=>{if(presses>=100){presses-=100; specials++; if(specials>=15) {special.remove()}update();}});
-            let container = document.querySelector(".center");
+            special = addButton("Specials for 100 presses","special","#specialcenter",()=>{if(presses>=100){presses-=100; specials++; if(specials>=15) {special.remove()}update();}});
+            let container = document.querySelector("#specialcenter")
             let buttondisplay = document.createElement('pre');
             buttondisplay.id = "displayspecials";
             container.append(buttondisplay)
@@ -237,17 +237,17 @@ function advancement(advancer){
         }break;
         case 13: {
             press.innerHTML = "Here. Buy some press miners."
-            let makepressminer = addButton("Press Miner: 200 presses","buyperssminer",".center",()=>{if(presses>=200){presses-=200; createPressMiner(); update(); if(minerpresscount>=12){makepressminer.remove();}}});
+            let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#buttoncenter",()=>{if(presses>=200){presses-=200; createPressMiner(); update(); if(minerpresscount>=12){makepressminer.remove();}}});
             let stone = document.querySelector("#pressstone");
             stone.innerHTML = bigpressbutton
         }break;
         case 14: {
             press.innerHTML = "There are too many bops! Get some of mine!"
-            let transferboptopress = addButton("2 BOPs : 1 press","transferbop",".center",()=>{if(bops>=2){presses+=Math.floor(bops/2);bops=0; transferbops++; update();}});
+            let transferboptopress = addButton("2 BOPs : 1 press","transferbop","#buttoncenter",()=>{if(bops>=2){presses+=Math.floor(bops/2);bops=0; transferbops++; update();}});
         }break;
         case 15: {
             bop.innerHTML = "Hey! I want my bops back!"
-            let transferpresstobop = addButton("2 presses : 1 BOP","transferpress",".center",()=>{if(presses>=2){bops+=Math.floor(presses/2);presses=0; transferpresses++; update();}});
+            let transferpresstobop = addButton("2 presses : 1 BOP","transferpress","#buttoncenter",()=>{if(presses>=2){bops+=Math.floor(presses/2);presses=0; transferpresses++; update();}});
         }break;
         case 16: {
             const endcontainer = document.querySelector("#endcenter");
@@ -288,11 +288,15 @@ function advancement(advancer){
             end.innerHTML = endtext;
             endcontainer.append(end);
             let miners = document.querySelector("#minercenter");
-            let buttons = document.querySelector("#buttoncenter");
             let pressminers = document.querySelector("#minercenterpress");
+            let buttons = document.querySelector("#buttoncenter");
+            let bopstone = document.querySelector("#bopstone");
+            let pressstone = document.querySelector("#pressstone");
             miners.remove();
             pressminers.remove();
             buttons.remove();
+            bopstone.remove();
+            pressstone.remove();
             endgame = true
         }
     }
