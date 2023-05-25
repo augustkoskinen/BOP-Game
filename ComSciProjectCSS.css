@@ -1,0 +1,35 @@
+body {
+    font-family: monospace;
+}
+
+.center {
+    text-align: center;
+    padding: 300px
+}
+
+.miners {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    transform: translate(-2%, -2%);
+}
+
+.minerspress {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    transform: translate(-2%, -2%);
+}
+
+.bopstone {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    transform: translate(-5%, -20%);
+}
+.pressstone {
+    position: absolute;
+    top: 20%;
+    right: 4%;
+    transform: translate(-4%, -20%);
+}
