@@ -1,9 +1,9 @@
 //graham was here
 
 //art
-const minerpic1 ="____\n |\n |";
+const minerpic1 ="____\n |\n |\n";
 const minerpic2 ="\n\n ___|\n    |";
-const pressminerpic1 ="____\n  |\n  |";
+const pressminerpic1 ="____\n  |\n  |\n";
 const pressminerpic2 ="\n\n|___ \n|    ";
 const bop = document.querySelector("#bop");
 const statement = document.querySelector("#statement");
@@ -202,7 +202,7 @@ function advancement(advancer){
         case 4: {
             let miner1 = createBopMiner("miner")
             curstatement="A miner arrived! This person will mine BOPs for you."
-            let interval = setInterval(()=>{curstatement=""; clearInterval(interval);}, 2000);
+            let interval = setInterval(()=>{curstatement="\n"; clearInterval(interval);}, 2000);
             let stone = document.querySelector("#bopstone");
             stone.innerHTML = bigbopbutton
         } break;
