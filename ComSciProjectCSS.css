@@ -32,6 +32,7 @@ button:active {
 
 .miners {
     position: absolute;
+    color:blue;
     top: 2%;
     left: 2%;
     transform: translate(-2%, -2%);

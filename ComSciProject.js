@@ -2,9 +2,9 @@
 
 //art
 const minerpic1 ="____\n |\n |";
-const minerpic2 ="   |\n---|\n   |";
+const minerpic2 ="\n\n ___|\n    |";
 const pressminerpic1 ="____\n  |\n  |";
-const pressminerpic2 ="|   \n|---\n|   ";
+const pressminerpic2 ="\n\n|___ \n|    ";
 const bop = document.querySelector("#bop");
 const statement = document.querySelector("#statement");
 const bigbopbutton = " _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n"
@@ -202,7 +202,7 @@ function advancement(advancer){
         case 4: {
             let miner1 = createBopMiner("miner")
             curstatement="A miner arrived! This person will mine BOPs for you."
-            let interval = setInterval(()=>{curstatement=""; clearInterval(interval);}, 1000);
+            let interval = setInterval(()=>{curstatement=""; clearInterval(interval);}, 2000);
             let stone = document.querySelector("#bopstone");
             stone.innerHTML = bigbopbutton
         } break;
