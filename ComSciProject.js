@@ -1,10 +1,10 @@
 //graham was here
 
 //art
-const minerpic1 ="____\n |\n |\n";
-const minerpic2 ="\n\n ___|\n    |";
-const pressminerpic1 ="____\n  |\n  |\n";
-const pressminerpic2 ="\n\n|___ \n|    ";
+const minerpic1 =" ____\n  |  \n  |   \n     ";
+const minerpic2 ="     \n     \n ___|\n    |";
+const pressminerpic1 ="____ \n  |  \n  |  \n     ";
+const pressminerpic2 ="     \n     \n|___ \n|    ";
 const bop = document.querySelector("#bop");
 const statement = document.querySelector("#statement");
 const bigbopbutton = " _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n _____________________  \n|     __   __   __    |\n|    |_/  /  \\ |__)   |\n|    |__) \\__/ |      |\n|                     |\n|_____________________|\n|_____________________|\n"
@@ -125,10 +125,10 @@ function checkAdvance() {
     if (bops-presses>=20&& !checkArray(advancements,1)) {
         advancement(1);
     }
-    if (bops-presses>=40&& !checkArray(advancements,2)) {
+    if (bops-presses>=40&& checkArray(advancements,1)&& !checkArray(advancements,2)) {
         advancement(2);
     }
-    if (bops-presses>=70&& !checkArray(advancements,3)) {
+    if (bops-presses>=70&& checkArray(advancements,2)&& !checkArray(advancements,3)) {
         advancement(3);
     }
     if (bops>=100&& !checkArray(advancements,4)) {
@@ -140,13 +140,13 @@ function checkAdvance() {
     if (pastpress+1 <= presses && checkArray(advancements,1)&& !checkArray(advancements,6)) {
         advancement(6);
     }
-    if (pastpress+20 <= presses && checkArray(advancements,1)&& !checkArray(advancements,7)) {
+    if (pastpress+20 <= presses && checkArray(advancements,6)&& checkArray(advancements,1)&& !checkArray(advancements,7)) {
         advancement(7);
     }
-    if (pastpress+30 <= presses && checkArray(advancements,1)&& !checkArray(advancements,8)) {
+    if (pastpress+30 <= presses && checkArray(advancements,7)&& checkArray(advancements,1)&& !checkArray(advancements,8)) {
         advancement(8);
     }
-    if (pastpress+40 <= presses && checkArray(advancements,1)&& !checkArray(advancements,9)) {
+    if (pastpress+40 <= presses&& checkArray(advancements,8) && checkArray(advancements,1)&& !checkArray(advancements,9)) {
         advancement(9);
     }
     if (specials>=5 && !checkArray(advancements,10)) {
@@ -155,10 +155,10 @@ function checkAdvance() {
     if (specials>=10 && !checkArray(advancements,11)) {
         advancement(11);
     }
-    if (minercount>=5&&!checkArray(advancements,12)) {
+    if (minercount>=3&&!checkArray(advancements,12)) {
         advancement(12);
     }
-    if (minercount>=10&& !checkArray(advancements,13)) {
+    if (minercount>=5&& !checkArray(advancements,13)) {
         advancement(13);
     }
     if (bops>=500 && !checkArray(advancements,14)) {
@@ -207,7 +207,7 @@ function advancement(advancer){
             stone.innerHTML = bigbopbutton
         } break;
         case 5: {
-            let makebopminer = addButton("Miner: 100 BOPS","buyminer","#buttoncenter",()=>{if(bops>=100){bops-=100; createBopMiner(); update(); if(minercount>=12){makebopminer.remove()}}});
+            let makebopminer = addButton("Miner: 100 BOPS","buyminer","#buttoncenter",()=>{if(bops>=100){bops-=100; createBopMiner(); update(); if(minercount>=10){makebopminer.remove()}}});
         }break;
         case 6: {
             press.innerHTML = "Yay. You pressed me ONCE."
@@ -237,7 +237,7 @@ function advancement(advancer){
         }break;
         case 13: {
             press.innerHTML = "Here. Buy some press miners."
-            let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#buttoncenter",()=>{if(presses>=200){presses-=200; createPressMiner(); update(); if(minerpresscount>=12){makepressminer.remove();}}});
+            let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#buttoncenter",()=>{if(presses>=200){presses-=200; createPressMiner(); update(); if(minerpresscount>=10){makepressminer.remove();}}});
             let stone = document.querySelector("#pressstone");
             stone.innerHTML = bigpressbutton
         }break;
@@ -255,7 +255,7 @@ function advancement(advancer){
             let endtext = "The game is over!";
             let favor=(minercount+ transferbops)-(minerpresscount+transferpresses)
             let percent = false
-            if(minercount+minerpresscount>=24&&specials>=10&&advancements.length >=17){
+            if(minercount+minerpresscount>=20&&specials>=10&&advancements.length >=17){
                 let percent = true
             }
             end.id = "end";
