@@ -289,7 +289,9 @@ function advancement(advancer){
         //add miner
         case 4: {
             let miner1 = createBopMiner("miner")
-            curstatement="A miner arrived! This person will mine BOPs for you."
+            if(!checkArray(advancements,4)) {
+                curstatement="A miner arrived! This person will mine BOPs for you."
+            }
             let interval = setInterval(()=>{curstatement="\n"; clearInterval(interval);}, 2000);
             let stone = document.querySelector("#bopstone");
             stone.innerHTML = bigbopbutton
