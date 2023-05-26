@@ -295,7 +295,9 @@ function advancement(advancer){
             stone.innerHTML = bigbopbutton
         } break;
         case 5: {
-            let makebopminer = addButton("Miner: 100 BOPS","buyminer","#other",()=>{if(bops>=100){bops-=100; createBopMiner(); minercount++; update(); if(minercount>=10){makebopminer.remove()}}});
+            if (minercount<10) {
+                let makebopminer = addButton("Miner: 100 BOPS","buyminer","#other",()=>{if(bops>=100){bops-=100; createBopMiner(); minercount++; update(); if(minercount>=10){makebopminer.remove()}}});
+            }
         }break;
         case 6: {
             press.innerHTML = "Yay. You pressed me ONCE."
@@ -324,10 +326,12 @@ function advancement(advancer){
             press.innerHTML = "Hey! I want press miners."
         }break;
         case 13: {
-            press.innerHTML = "Here. Buy some press miners."
-            let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#other",()=>{if(presses>=200){presses-=200; createPressMiner(); minerpresscount++; update(); if(minerpresscount>=10){makepressminer.remove();}}});
-            let stone = document.querySelector("#pressstone");
-            stone.innerHTML = bigpressbutton
+            if (minerpresscount<10) {
+                press.innerHTML = "Here. Buy some press miners."
+                let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#other",()=>{if(presses>=200){presses-=200; createPressMiner(); minerpresscount++; update(); if(minerpresscount>=10){makepressminer.remove();}}});
+                let stone = document.querySelector("#pressstone");
+                stone.innerHTML = bigpressbutton
+            }
         }break;
         case 14: {
             press.innerHTML = "There are too many bops! Get some of mine!"
