@@ -425,6 +425,7 @@ function advancement(advancer){
             bopstone.style.visibility = "hidden"
             pressstone.style.visibility = "hidden"
             endgame = true
+            hadfirstminer = false
         }
     }
 }
@@ -458,6 +459,7 @@ reset.addEventListener("click", () =>{
     clearElement(document.querySelector("#bopstone"));
     clearElement(document.querySelector("#pressstone"));
     clearElement(document.querySelector("#other"));
+    clearElement(document.querySelector("#endcenter"));
     let miners = document.querySelector("#minercenter");
     let pressminers = document.querySelector("#minercenterpress");
     let buttons = document.querySelector("#buttoncenter");
@@ -491,10 +493,7 @@ reset.addEventListener("click", () =>{
     update();
     resetbool = false
     hadfirstminer = false
-    let endcontainer = document.querySelector("#endcenter");
-    if(endcontainer!=null) {
-        endcontainer.remove();
-    }
+    saveGame();
 });
 
 //timer
