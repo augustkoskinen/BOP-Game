@@ -52,6 +52,7 @@ function saveGame() {
     localStorage.presses = JSON.stringify(presses)
     localStorage.specials = JSON.stringify(specials)
     localStorage.advancements = JSON.stringify(advancements)
+    localStorage.advancementslength = JSON.stringify(advancements.length)
     localStorage.curstatement = curstatement
     localStorage.timer = JSON.stringify(timer)
     localStorage.resetbool = JSON.stringify(resetbool)
@@ -67,7 +68,10 @@ function loadGame() {
     bops = parseInt(localStorage.bops)
     presses = parseInt(localStorage.presses)
     specials = parseInt(localStorage.specials)
-    advancements = JSON.parse(localStorage.advancements)
+    let advancelength = parseInt(localStorage.advancementslength)
+    if (advancelength!=0) {
+        advancements = JSON.parse(localStorage.advancements)
+    }
     curstatement = localStorage.curstatement
     timer = parseInt(localStorage.timer)
     resetbool = JSON.parse(localStorage.resetbool)
