@@ -56,6 +56,7 @@ function saveGame() {
     localStorage.curstatement = curstatement
     localStorage.timer = JSON.stringify(timer)
     localStorage.resetbool = JSON.stringify(resetbool)
+    localStorage.resetminers = JSON.stringify(resetminers)
     localStorage.minerpresscount = JSON.stringify(minerpresscount)
     localStorage.minercount = JSON.stringify(minercount)
     localStorage.pastpress = JSON.stringify(pastpress)
@@ -69,6 +70,7 @@ function loadGame() {
     presses = parseInt(localStorage.presses)
     specials = parseInt(localStorage.specials)
     let advancelength = parseInt(localStorage.advancementslength)
+    resetminers = JSON.parse(localStorage.resetminers)
     if (advancelength!=0) {
         advancements = JSON.parse(localStorage.advancements)
     }
@@ -77,8 +79,10 @@ function loadGame() {
     resetbool = JSON.parse(localStorage.resetbool)
     minerpresscount = parseInt(localStorage.minerpresscount)
     minercount = parseInt(localStorage.minercount)
-    for(var i = 0; i < minercount;i++) { createBopMiner(); }
-    for(var i = 0; i < minerpresscount;i++) { createPressMiner();}
+    if(!resetminers) {
+        for(var i = 0; i < minercount;i++) { createBopMiner(); }
+        for(var i = 0; i < minerpresscount;i++) { createPressMiner();}
+    }
     pastpress = parseInt(localStorage.pastpress)
     endgame = JSON.parse(localStorage.endgame)
     transferbops = parseInt(localStorage.transferbops)
@@ -319,22 +323,25 @@ function advancement(advancer){
         //add miner
         case 4: {
             if(!hadfirstminer) {
-                createBopMiner("miner")
                 minercount++
+                createBopMiner("miner")
                 if(!checkArray(advancements,4)) {
                     curstatement="A miner arrived! This person will mine BOPs for you."
                 }
-                let interval = setInterval(()=>{curstatement="\n"; hadfirstminer = true; clearInterval(interval);}, 2000);
+                hadfirstminer = true;
+                let interval = setInterval(()=>{curstatement="\n"; clearInterval(interval);}, 2000);
             }
             let stone = document.querySelector("#bopstone");
             stone.innerHTML = bigbopbutton
         } break;
         case 5: {
-            if (minercount<10) {
+            console.log(resetminers)
+            console.log(minercount)
+            if (!resetminers&&minercount<9) {
                 let makebopminer = addButton("Miner: 100 BOPS","buyminer","#other",()=>{if(bops>=100){bops-=100; createBopMiner(); minercount++; update(); if(minercount>=9){makebopminer.remove()}}});
+                let stone = document.querySelector("#bopstone");
+                stone.innerHTML = bigbopbutton
             }
-            let stone = document.querySelector("#bopstone");
-            stone.innerHTML = bigbopbutton
         }break;
         case 6: {
             press.innerHTML = "Yay. You pressed me ONCE."
@@ -365,7 +372,7 @@ function advancement(advancer){
             }
         }break;
         case 13: {
-            if (!resetminers&&minerpresscount<10) {
+            if (!resetminers&&minerpresscount<9) {
                 press.innerHTML = "Here. Buy some press miners."
                 let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#other",()=>{if(presses>=200){presses-=200; createPressMiner(); minerpresscount++; update(); if(minerpresscount>=9){makepressminer.remove();}}});
                 let stone = document.querySelector("#pressstone");
