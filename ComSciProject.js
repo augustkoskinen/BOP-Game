@@ -82,6 +82,10 @@ function loadGame() {
     if(!resetminers) {
         for(var i = 0; i < minercount;i++) { createBopMiner(); }
         for(var i = 0; i < minerpresscount;i++) { createPressMiner();}
+    } else {
+        minercount = 0
+        minerpresscount = 0
+        resetminers = false
     }
     pastpress = parseInt(localStorage.pastpress)
     endgame = JSON.parse(localStorage.endgame)
@@ -335,8 +339,6 @@ function advancement(advancer){
             stone.innerHTML = bigbopbutton
         } break;
         case 5: {
-            console.log(resetminers)
-            console.log(minercount)
             if (!resetminers&&minercount<9) {
                 let makebopminer = addButton("Miner: 100 BOPS","buyminer","#other",()=>{if(bops>=100){bops-=100; createBopMiner(); minercount++; update(); if(minercount>=9){makebopminer.remove()}}});
                 let stone = document.querySelector("#bopstone");
