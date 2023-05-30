@@ -341,9 +341,9 @@ function advancement(advancer){
         case 5: {
             if (!resetminers&&minercount<9) {
                 let makebopminer = addButton("Miner: 100 BOPS","buyminer","#other",()=>{if(bops>=100){bops-=100; createBopMiner(); minercount++; update(); if(minercount>=9){makebopminer.remove()}}});
-                let stone = document.querySelector("#bopstone");
-                stone.innerHTML = bigbopbutton
             }
+            let stone = document.querySelector("#bopstone");
+            stone.innerHTML = bigbopbutton
         }break;
         case 6: {
             press.innerHTML = "Yay. You pressed me ONCE."
@@ -377,9 +377,9 @@ function advancement(advancer){
             if (!resetminers&&minerpresscount<9) {
                 press.innerHTML = "Here. Buy some press miners."
                 let makepressminer = addButton("Press Miner: 200 presses","buyperssminer","#other",()=>{if(presses>=200){presses-=200; createPressMiner(); minerpresscount++; update(); if(minerpresscount>=9){makepressminer.remove();}}});
-                let stone = document.querySelector("#pressstone");
-                stone.innerHTML = bigpressbutton
             }
+            let stone = document.querySelector("#pressstone");
+            stone.innerHTML = bigpressbutton
         }break;
         case 14: {
             press.innerHTML = "There are too many bops! Get some of mine!"
@@ -396,7 +396,7 @@ function advancement(advancer){
             let favor=(minercount+ transferbops)-(minerpresscount+transferpresses)
             let percent = false
             if(minercount+minerpresscount>=20&&specials>=10&&advancements.length >=17){
-                let percent = true
+                percent = true
             }
             end.id = "end";
             
