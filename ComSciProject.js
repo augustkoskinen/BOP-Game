@@ -487,7 +487,6 @@ reset.addEventListener("click", () =>{
     bopstone.innerHTML = "";
     let newarray = []
     specials = 0;
-    totalbops = 0
     curstatement = ""
     bops = 0;
     presses = 0;
